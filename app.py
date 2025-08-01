@@ -15,8 +15,8 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Razorpay keys
-RAZORPAY_KEY_ID = "rzp_test_AMP6EsdBZy7cZK"
-RAZORPAY_KEY_SECRET = "TxeUxSIGdymuf1o7yAV7AyCF"
+RAZORPAY_KEY_ID = "rzp_test_AMP6EsdBZy7cZK"#id
+RAZORPAY_KEY_SECRET = "TxeUxSIGdymuf1o7yAV7AyCF"#password
 razorpay_client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
 
 # DB connection
