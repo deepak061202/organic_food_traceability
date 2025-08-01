@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .otp-container {
+            max-width: 500px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .otp-container h2 {
+            margin-bottom: 15px;
+            color: #2e8b57;
+        }
+
+        .otp-container p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        .otp-container input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .otp-container button {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .otp-container button:hover {
+            background-color: #246b45;
+        }
+
+        .otp-display {
+            font-size: 1.5em;
+            color: #e67e22;
+            font-weight: bold;
+            margin: 10px 0 25px;
+        }
+
+        .note {
+            font-size: 0.85em;
+            color: #888;
+        }
+    </style>
+</head>
+
+<div class="otp-container">
+    <h2>OTP Verification</h2>
+    <p>Please enter the OTP sent to your registered mobile/email.</p>
+
+    <div class="otp-display">Test OTP: <code>{{ otp }}</code></div>
+    <div class="note">* This OTP is shown here only in test mode. In production, it will be sent via SMS/email.</div>
+
+    <form method="POST" action="/confirm_otp">
+        <input type="text" name="otp" placeholder="Enter your OTP here" required>
+        <br>
+        <button type="submit">✅ Confirm OTP</button>
+    </form>
+</div>
+{% endblock %}

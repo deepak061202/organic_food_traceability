@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 40px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #27ae60;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #219150;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>Upload New Product</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="name">Product Name</label>
+        <input type="text" name="name" id="name" required>
+
+        <label for="category">Category</label>
+        <select name="category" id="category" required>
+            <option value="">-- Select Category --</option>
+            <option value="Fruits">Fruits</option>
+            <option value="Vegetables">Vegetables</option>
+            <option value="Grains">Grains</option>
+            <option value="Dairy">Dairy</option>
+        </select>
+
+        <label for="price">Price (₹)</label>
+        <input type="number" name="price" id="price" step="0.01" required>
+
+        <label for="quantity">Quantity</label>
+        <input type="number" name="quantity" id="quantity" required>
+
+        <label for="description">Description</label>
+        <textarea name="description" id="description" rows="4" required></textarea>
+
+        <!-- Optional image upload -->
+    
+        <label for="image">Product Image</label>
+        <input type="file" name="image" id="image" accept="image/*">
+        
+
+        <button type="submit">Upload</button>
+    </form>
+
+    <a href="/farmer_dashboard">← Back to Dashboard</a>
+</body>
+</html>
+

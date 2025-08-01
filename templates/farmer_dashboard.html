@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Farmer Dashboard</title>
+    <style>
+        body, h1, h2, h3, p {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #2e8b57;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .product {
+            background: #fff;
+            border-radius: 10px;
+            display: flex;
+            margin-bottom: 20px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 20px;
+            background-color: #eaeaea;
+        }
+
+        .product-details h3 {
+            margin-bottom: 10px;
+        }
+
+        .product-details p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome, Farmer!</h1>
+    <nav>
+        <a href="/upload_product">➕ Upload New Product</a>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+
+<main>
+    <h2>Your Products</h2>
+
+    {% if products %}
+        {% for p in products %}
+        <div class="product">
+            {% if p.product_image %}
+    <img src="{{ url_for('static', filename=p.product_image) }}" alt="Product Image">
+{% else %}
+    <img src="{{ url_for('static', filename='default.jpg') }}" alt="No Image">
+{% endif %}
+
+            <div class="product-details">
+                <h3>{{ p.name }}</h3>
+                <p><strong>Quantity:</strong> {{ p.quantity }} units</p>
+                <p><strong>Price:</strong> ₹{{ p.price }}</p>
+                <p><strong>Category:</strong> {{ p.category }}</p>
+                <p><strong>Description:</strong> {{ p.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No products uploaded yet.</p>
+    {% endif %}
+</main>
+
+</body>
+</html>

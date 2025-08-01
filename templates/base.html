@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/styles.css">
+
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Organic Food App</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/register">Register</a>
+            <a href="/login">Login</a>
+            <a href="/logout">Logout</a>
+            {% if session.get('role') == 'farmer' %}
+                <a href="/upload">Upload Product</a>
+            {% elif session.get('role') == 'consumer' %}
+                <a href="/products">Shop</a>
+            {% endif %}
+            
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
